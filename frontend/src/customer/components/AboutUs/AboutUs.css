@@ -1,0 +1,21 @@
+.font-meadowbrook {
+  font-size: 30px;
+  color: #cc723f;
+  opacity: 0; /* Ban đầu ẩn thẻ h1 */
+  transform: translateY(20px); /* Dịch chuyển thẻ h1 xuống 20px */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng khi hover */
+.font-meadowbrook:hover {
+  opacity: 1; /* Hiển thị thẻ h1 khi hover */
+  transform: translateY(0); /* Di chuyển thẻ h1 lên vị trí ban đầu */
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}

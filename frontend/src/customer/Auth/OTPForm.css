@@ -1,0 +1,22 @@
+/* Nếu bạn đã có các lớp CSS khác, hãy thêm vào ở đây */
+/* Hoặc sử dụng inline style tại các phần tử JSX để thiết lập các đặc điểm cụ thể */
+
+.OTPForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Các đặc điểm cho phần form */
+  .OTPForm .rounded-md {
+    border-radius: 10px;
+  }
+  
+  /* Các đặc điểm cho button Submit */
+  .OTPForm .bg-blue-500 {
+    background-color: #3b82f6;
+  }
+  
+  .OTPForm .hover\:bg-blue-600:hover {
+    background-color: #2563eb;
+  }
