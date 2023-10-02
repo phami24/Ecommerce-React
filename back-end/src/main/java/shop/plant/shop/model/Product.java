@@ -19,6 +19,7 @@ import java.util.List;
  * - Price of the product (price)
  * - Maim image of product (mainImageUrl)
  * - Timestamp for when the product was created (createdAt)
+ * - Products for gender : male || female || another  ( gender )
  * - Category ID (categoryId) - Foreign key linking to ProductCategory
  * - Inventory ID (inventoryId) - Foreign key linking to ProductInventory
  * - Discount ID (discountId) - Foreign key linking to Discount
@@ -32,13 +33,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String desc;
+    private String description;
     private double price;
     private String mainImageUrl;
     private LocalDateTime createdAt = LocalDateTime.now();
-    private Long categoryId;
-    private Long inventoryId;
-    private Long discountId;
+    private String gender;
 
     @ManyToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "id")

@@ -6,23 +6,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * This class represents a product image entity.
- * It is mapped to a database table and contains information about product images, including:
+ * This class represents product attributes for a specific product.
+ * It is not mapped to a database table on its own, but it contains information about product attributes, including:
  * - Unique identifier (id)
- * - Image URL (imageUrl)
+ * - Size of the product (size)
+ * - Color of the product (color)
  * - Product ID (productId) - Foreign key linking to Product
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductImage {
+public class ProductAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String imageUrl;
+    private String size;
+    private String color;
     @ManyToOne
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private Product product;
-}
 
+}

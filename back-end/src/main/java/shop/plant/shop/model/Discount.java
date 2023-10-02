@@ -30,7 +30,7 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String desc;
+    private String description;
     private int discountPercent;
     private boolean active;
     private LocalDateTime createdAt = LocalDateTime.now();

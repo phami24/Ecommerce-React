@@ -7,5 +7,4 @@ import shop.plant.shop.model.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long> {
     public Users findByEmail(String email);
-
 }

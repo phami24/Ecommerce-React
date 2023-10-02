@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
  * - Unique identifier (id)
  * - Quantity of the product available in inventory (quantity)
  */
-
-
 @Entity
 @Data
 @NoArgsConstructor
