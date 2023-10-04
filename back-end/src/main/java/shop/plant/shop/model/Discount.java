@@ -15,16 +15,17 @@ import java.time.LocalDateTime;
  * It is mapped to a database table and contains information about discounts, including:
  * - Unique identifier (id)
  * - Name of the discount (name)
- * - Description or details of the discount (desc)
+ * - Description or details of the discount (description)
  * - Percentage value of the discount (discountPercent)
  * - Active status of the discount (active)
+ * - Start time for when the discount becomes valid (startTime)
+ * - End time for when the discount expires (endTime)
  * - Timestamp for when the discount was created (createdAt)
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +34,7 @@ public class Discount {
     private String description;
     private int discountPercent;
     private boolean active;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private LocalDateTime createdAt = LocalDateTime.now();
 }
