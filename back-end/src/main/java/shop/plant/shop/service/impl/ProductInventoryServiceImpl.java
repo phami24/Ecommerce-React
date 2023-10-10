@@ -48,5 +48,10 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
         }
     }
 
+    @Override
+    public Optional<ProductInventory> getInventoryById(Long inventoryId) {
+        return productInventoryRepository.findById(inventoryId);
+    }
+
     // You can implement additional methods as needed for product inventory management.
 }

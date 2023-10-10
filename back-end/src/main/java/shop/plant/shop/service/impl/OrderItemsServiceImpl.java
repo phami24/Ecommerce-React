@@ -3,6 +3,7 @@ package shop.plant.shop.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shop.plant.shop.dto.OrderItemsDto;
 import shop.plant.shop.model.OrderItems;
 import shop.plant.shop.repositories.OrderItemsRepository;
 import shop.plant.shop.service.OrderItemsService;
@@ -72,6 +73,21 @@ public class OrderItemsServiceImpl implements OrderItemsService {
     @Override
     public void deleteOrderItem(Long id) {
         orderItemsRepository.deleteById(id);
+    }
+
+    @Override
+    public OrderItemsDto convertToDto(OrderItems orderItem) {
+        OrderItemsDto orderItemDto = new OrderItemsDto();
+        orderItemDto.setId(orderItem.getId());
+        orderItemDto.setProductId(orderItem.getProductId());
+        orderItemDto.setQuantity(orderItem.getQuantity());
+        orderItemDto.setCreateAt(orderItem.getCreateAt());
+        return orderItemDto;
+    }
+
+    @Override
+    public List<OrderItems> getOrderItemsByOrderDetailId(Long id) {
+        return null;
     }
 
     // You can implement additional methods as needed for order item management.

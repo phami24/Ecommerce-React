@@ -1,5 +1,6 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.UserAddressDto;
 import shop.plant.shop.model.UserAddress;
 
 import java.util.List;
@@ -47,5 +48,27 @@ public interface UserAddressService {
      */
     void deleteUserAddress(Long id);
 
-    // You can add more methods as needed for user address management.
+    /**
+     * Convert a UserAddress entity to a UserAddressDto.
+     *
+     * @param userAddress The UserAddress entity to be converted.
+     * @return The corresponding UserAddressDto.
+     */
+    UserAddressDto convertToDto(UserAddress userAddress);
+
+    /**
+     * Convert a list of UserAddress entities to a list of UserAddressDto objects.
+     *
+     * @param userAddresses The list of UserAddress entities to be converted.
+     * @return The corresponding list of UserAddressDto objects.
+     */
+    List<UserAddressDto> convertToDtoList(List<UserAddress> userAddresses);
+
+    /**
+     * Convert a UserAddressDto to a UserAddress entity.
+     *
+     * @param userAddressDto The UserAddressDto to be converted.
+     * @return The corresponding UserAddress entity.
+     */
+    UserAddress convertToEntity(UserAddressDto userAddressDto);
 }

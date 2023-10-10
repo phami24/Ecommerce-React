@@ -1,5 +1,6 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.ProductAttributeDto;
 import shop.plant.shop.model.ProductAttribute;
 
 import java.util.List;
@@ -45,6 +46,10 @@ public interface ProductAttributeService {
      * @param id The ID of the product attribute to delete.
      */
     void deleteProductAttribute(Long id);
+
+    ProductAttribute convertToEntity(ProductAttributeDto productAttributeDto);
+
+    ProductAttributeDto convertToDto(ProductAttribute savedProductAttribute);
 
     // You can add more methods as needed for product attribute management.
 }

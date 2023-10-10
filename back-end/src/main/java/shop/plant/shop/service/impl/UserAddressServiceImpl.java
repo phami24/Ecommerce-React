@@ -2,12 +2,14 @@ package shop.plant.shop.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shop.plant.shop.dto.UserAddressDto;
 import shop.plant.shop.model.UserAddress;
 import shop.plant.shop.repositories.UserAddressRepository;
 import shop.plant.shop.service.UserAddressService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of the UserAddressService interface for managing user addresses.
@@ -74,5 +76,65 @@ public class UserAddressServiceImpl implements UserAddressService {
         userAddressRepository.deleteById(id);
     }
 
-    // You can implement additional methods as needed for user address management.
+    /**
+     * Convert a UserAddress entity to a UserAddressDto.
+     *
+     * @param userAddress The UserAddress entity to be converted.
+     * @return The corresponding UserAddressDto.
+     */
+    @Override
+    public UserAddressDto convertToDto(UserAddress userAddress) {
+        UserAddressDto userAddressDto = new UserAddressDto();
+        userAddressDto.setId(userAddress.getId());
+        userAddressDto.setAddressLineOne(userAddress.getAddressLineOne());
+        userAddressDto.setAddressLineTwo(userAddress.getAddressLineTwo());
+        userAddressDto.setCity(userAddress.getCity());
+        userAddressDto.setPostalCode(userAddress.getPostalCode());
+        userAddressDto.setCountry(userAddress.getCountry());
+
+        // Set the user ID associated with the address
+        if (userAddress.getUser() != null) {
+            userAddressDto.setUserId(userAddress.getUser().getId());
+        }
+
+        return userAddressDto;
+    }
+
+    /**
+     * Convert a list of UserAddress entities to a list of UserAddressDto objects.
+     *
+     * @param userAddresses The list of UserAddress entities to be converted.
+     * @return The corresponding list of UserAddressDto objects.
+     */
+    @Override
+    public List<UserAddressDto> convertToDtoList(List<UserAddress> userAddresses) {
+        return userAddresses.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Convert a UserAddressDto to a UserAddress entity.
+     *
+     * @param userAddressDto The UserAddressDto to be converted.
+     * @return The corresponding UserAddress entity.
+     */
+    @Override
+    public UserAddress convertToEntity(UserAddressDto userAddressDto) {
+        UserAddress userAddress = new UserAddress();
+        userAddress.setId(userAddressDto.getId());
+        userAddress.setAddressLineOne(userAddressDto.getAddressLineOne());
+        userAddress.setAddressLineTwo(userAddressDto.getAddressLineTwo());
+        userAddress.setCity(userAddressDto.getCity());
+        userAddress.setPostalCode(userAddressDto.getPostalCode());
+        userAddress.setCountry(userAddressDto.getCountry());
+
+        // Set the associated user based on the user ID
+        if (userAddressDto.getUserId() != null) {
+            // You can fetch the user entity here if needed
+            // userAddress.setUser(userService.getUserById(userAddressDto.getUserId()).orElse(null));
+        }
+
+        return userAddress;
+    }
 }

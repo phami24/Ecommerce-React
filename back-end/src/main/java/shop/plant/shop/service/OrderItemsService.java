@@ -1,5 +1,6 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.OrderItemsDto;
 import shop.plant.shop.model.OrderItems;
 
 import java.util.List;
@@ -46,5 +47,7 @@ public interface OrderItemsService {
      */
     void deleteOrderItem(Long id);
 
-    // You can add more methods as needed for order item management.
+    OrderItemsDto convertToDto(OrderItems orderItem);
+
+    List<OrderItems> getOrderItemsByOrderDetailId(Long id);
 }

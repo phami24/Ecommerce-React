@@ -1,6 +1,6 @@
 package shop.plant.shop.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import shop.plant.shop.model.ProductCategory;
 import shop.plant.shop.repositories.ProductCategoryRepository;
@@ -13,13 +13,10 @@ import java.util.Optional;
  * Implementation of the ProductCategoryService interface for managing product categories.
  */
 @Service
+@RequiredArgsConstructor
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     private final ProductCategoryRepository productCategoryRepository;
 
-    @Autowired
-    public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
-        this.productCategoryRepository = productCategoryRepository;
-    }
 
     /**
      * Save a new product category or update an existing one.

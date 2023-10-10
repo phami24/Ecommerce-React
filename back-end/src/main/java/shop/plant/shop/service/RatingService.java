@@ -1,5 +1,7 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.RatingDto;
+import shop.plant.shop.exception.UserException;
 import shop.plant.shop.model.Rating;
 
 import java.util.List;
@@ -45,4 +47,28 @@ public interface RatingService {
      * @param id The unique identifier of the rating to be deleted.
      */
     void deleteRating(Long id);
+
+    /**
+     * Convert a RatingDto to a Rating entity.
+     *
+     * @param ratingDto The RatingDto to be converted.
+     * @return The corresponding Rating entity.
+     */
+    Rating convertToEntity(RatingDto ratingDto) throws UserException;
+
+    /**
+     * Convert a Rating entity to a RatingDto.
+     *
+     * @param rating The Rating entity to be converted.
+     * @return The corresponding RatingDto.
+     */
+    RatingDto convertToDto(Rating rating);
+
+    /**
+     * Convert a list of Rating entities to a list of RatingDto objects.
+     *
+     * @param ratings The list of Rating entities to be converted.
+     * @return The corresponding list of RatingDto objects.
+     */
+    List<RatingDto> convertToDtoList(List<Rating> ratings);
 }

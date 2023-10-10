@@ -1,10 +1,13 @@
 package shop.plant.shop.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shop.plant.shop.dto.ProductAttributeDto;
 import shop.plant.shop.model.ProductAttribute;
 import shop.plant.shop.repositories.ProductAttributeRepository;
 import shop.plant.shop.service.ProductAttributeService;
+import shop.plant.shop.service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,13 +16,11 @@ import java.util.Optional;
  * Implementation of the ProductAttributeService interface for managing product attributes.
  */
 @Service
+@RequiredArgsConstructor
 public class ProductAttributeServiceImpl implements ProductAttributeService {
-    private final ProductAttributeRepository productAttributeRepository;
 
-    @Autowired
-    public ProductAttributeServiceImpl(ProductAttributeRepository productAttributeRepository) {
-        this.productAttributeRepository = productAttributeRepository;
-    }
+    private final ProductAttributeRepository productAttributeRepository;
+    private final ProductService productService;
 
     /**
      * Save a new product attribute or update an existing one.
@@ -73,5 +74,53 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
         productAttributeRepository.deleteById(id);
     }
 
-    // You can implement additional methods as needed for product attribute management.
+    /**
+     * Converts a ProductAttributeDto to a ProductAttribute entity.
+     *
+     * @param productAttributeDto The ProductAttributeDto to be converted.
+     * @return A ProductAttribute entity.
+     */
+    @Override
+    public ProductAttribute convertToEntity(ProductAttributeDto productAttributeDto) {
+        if (productAttributeDto == null) {
+            return null;
+        }
+
+        ProductAttribute productAttribute = new ProductAttribute();
+
+        // Set the attributes of the ProductAttribute entity from the DTO
+        productAttribute.setId(productAttributeDto.getId());
+        productAttribute.setSize(productAttributeDto.getSize());
+        productAttribute.setColor(productAttributeDto.getColor());
+
+        // You may also set the product association here if needed:
+        productAttribute.setProduct(productService.getProductById(productAttributeDto.getProductId()).orElse(null));
+
+        return productAttribute;
+    }
+
+    /**
+     * Converts a ProductAttribute entity to a ProductAttributeDto.
+     *
+     * @param savedProductAttribute The ProductAttribute entity to be converted.
+     * @return A ProductAttributeDto.
+     */
+    @Override
+    public ProductAttributeDto convertToDto(ProductAttribute savedProductAttribute) {
+        if (savedProductAttribute == null) {
+            return null;
+        }
+
+        ProductAttributeDto productAttributeDto = new ProductAttributeDto();
+
+        // Set the attributes of the ProductAttributeDto from the entity
+        productAttributeDto.setId(savedProductAttribute.getId());
+        productAttributeDto.setSize(savedProductAttribute.getSize());
+        productAttributeDto.setColor(savedProductAttribute.getColor());
+
+        // You may also set the product ID in the DTO if needed:
+        productAttributeDto.setProductId(savedProductAttribute.getProduct().getId());
+
+        return productAttributeDto;
+    }
 }

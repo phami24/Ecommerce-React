@@ -24,5 +24,7 @@ public interface ProductInventoryService {
      */
     void updateQuantityByProductId(Long id, int quantity);
 
+     Optional<ProductInventory> getInventoryById(Long inventoryId);
+
     // You can add more methods as needed for product inventory management.
 }

@@ -46,5 +46,7 @@ public interface OrderDetailsService {
      */
     void deleteOrderDetails(Long id);
 
+    double calTotal(Long id);
+
     // You can add more methods as needed for order details management.
 }

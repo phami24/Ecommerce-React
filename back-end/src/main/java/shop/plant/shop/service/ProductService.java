@@ -1,5 +1,6 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.ProductDto;
 import shop.plant.shop.model.Product;
 
 import java.util.List;
@@ -46,5 +47,7 @@ public interface ProductService {
      */
     void deleteProduct(Long id);
 
-    // You can add more methods as needed for product management.
+    ProductDto convertToDto(Product product);
+
+    Product convertToEntity(ProductDto productDto);
 }

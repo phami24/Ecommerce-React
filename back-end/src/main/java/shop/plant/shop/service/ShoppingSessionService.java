@@ -1,5 +1,7 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.ShoppingSessionDto;
+import shop.plant.shop.exception.UserException;
 import shop.plant.shop.model.ShoppingSession;
 
 import java.util.List;
@@ -46,5 +48,27 @@ public interface ShoppingSessionService {
      */
     void deleteShoppingSession(Long id);
 
-    // You can add more methods as needed for shopping session management.
+    /**
+     * Convert a ShoppingSession entity to a ShoppingSessionDto.
+     *
+     * @param shoppingSession The ShoppingSession entity to be converted.
+     * @return The corresponding ShoppingSessionDto.
+     */
+    ShoppingSessionDto convertToDto(ShoppingSession shoppingSession);
+
+    /**
+     * Convert a list of ShoppingSession entities to a list of ShoppingSessionDto objects.
+     *
+     * @param shoppingSessions The list of ShoppingSession entities to be converted.
+     * @return The corresponding list of ShoppingSessionDto objects.
+     */
+    List<ShoppingSessionDto> convertToDtoList(List<ShoppingSession> shoppingSessions);
+
+    /**
+     * Convert a ShoppingSessionDto to a ShoppingSession entity.
+     *
+     * @param shoppingSessionDto The ShoppingSessionDto to be converted.
+     * @return The corresponding ShoppingSession entity.
+     */
+    ShoppingSession convertToEntity(ShoppingSessionDto shoppingSessionDto) throws UserException;
 }

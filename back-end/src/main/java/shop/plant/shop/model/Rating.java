@@ -1,6 +1,10 @@
 package shop.plant.shop.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +18,10 @@ import java.time.LocalDateTime;
  * - Timestamp for when the rating was created (createdAt)
  */
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

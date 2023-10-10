@@ -1,5 +1,6 @@
 package shop.plant.shop.service;
 
+import shop.plant.shop.dto.ProductImageDto;
 import shop.plant.shop.model.ProductImage;
 
 import java.util.List;
@@ -45,6 +46,10 @@ public interface ProductImageService {
      * @param id The ID of the product image to delete.
      */
     void deleteProductImage(Long id);
+
+    ProductImage convertToEntity(ProductImageDto productImageDto);
+
+    ProductImageDto convertToDto(ProductImage savedProductImage);
 
     // You can add more methods as needed for product image management.
 }

@@ -29,7 +29,7 @@ public class OrderItems {
     private LocalDateTime createAt = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "oderId" , referencedColumnName = "id")
-    private OrderDetails oderDetails;
+    @JoinColumn(name = "oderId", referencedColumnName = "id")
+    private OrderDetails orderDetails;
 
 }

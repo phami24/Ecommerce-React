@@ -5,7 +5,7 @@ import shop.plant.shop.model.ProductCategory;
 import java.util.List;
 import java.util.Optional;
 
-/**d
+/**
  * Service interface for managing product categories.
  */
 public interface ProductCategoryService {
