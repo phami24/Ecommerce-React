@@ -1,3 +1,1 @@
-# e-commerce
-
-TechWiz =))
+# e-commerce-react
